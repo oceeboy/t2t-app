@@ -28,13 +28,7 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 
-type Route =
-  | '/'
-  | '/home'
-  //   | '/search'
-  //   | '/add'
-  //   | '/library'
-  | '/profile';
+type Route = '/' | '/home' | '/chat' | '/profile';
 type Tab = {
   name: string;
   route: Route;
@@ -106,25 +100,19 @@ export default function TabsLayout() {
   // Shared values for each tab
   const tabScales = {
     home: useSharedValue(1),
-    search: useSharedValue(1),
-    add: useSharedValue(1),
-    library: useSharedValue(1),
+    chat: useSharedValue(1),
     profile: useSharedValue(1),
   };
 
   const tabOpacities = {
     home: useSharedValue(0),
-    search: useSharedValue(0),
-    add: useSharedValue(0),
-    library: useSharedValue(0),
+    chat: useSharedValue(0),
     profile: useSharedValue(0),
   };
 
   const tabBackgrounds = {
     home: useSharedValue(0),
-    search: useSharedValue(0),
-    add: useSharedValue(0),
-    library: useSharedValue(0),
+    chat: useSharedValue(0),
     profile: useSharedValue(0),
   };
 
@@ -200,6 +188,12 @@ export default function TabsLayout() {
       route: '/home',
       icon: 'home',
       iconOutline: 'home-outline',
+    },
+    {
+      name: 'Chat',
+      route: '/chat',
+      icon: 'chatbubble',
+      iconOutline: 'chatbubble-outline',
     },
     // {
     //   name: 'Search',
@@ -415,18 +409,12 @@ export default function TabsLayout() {
           name="home"
           options={{ title: 'Home' }}
         />
-        {/* <Tabs.Screen
-          name="search"
-          options={{ title: 'Search' }}
-        />
+
         <Tabs.Screen
-          name="add"
-          options={{ title: 'Add' }}
+          name="chat"
+          options={{ title: 'Chat' }}
         />
-        <Tabs.Screen
-          name="library"
-          options={{ title: 'Library' }}
-        /> */}
+
         <Tabs.Screen
           name="profile"
           options={{ title: 'Profile' }}
